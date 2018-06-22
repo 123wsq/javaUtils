@@ -26,7 +26,11 @@ public class FileDownloadManager {
         byte[] data = readInputStream(inStream);  
         //new一个文件对象用来保存图片，默认保存当前工程根目录  
         System.out.println(savePath + UrlUtils.getUrlFileName(path));
+        File file = new File(savePath);
         File imageFile = new File(savePath + UrlUtils.getUrlFileName(path));  
+        if (!file.exists()) {
+        	file.mkdir();
+		}
         //创建输出流  
         FileOutputStream outStream = new FileOutputStream(imageFile);  
         //写入数据  
